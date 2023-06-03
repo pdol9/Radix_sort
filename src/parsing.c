@@ -6,7 +6,7 @@
 /*   By: pdolinar <pdolinar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:54:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/06/29 20:28:10 by pdolinar         ###   ########.fr       */
+/*   Updated: 2023/06/02 21:17:26 by pdolinar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,49 +62,65 @@ static
 int	ft_num_check(t_stack *a, t_input *set)
 {
 	t_node	*tmp;
-	t_node	*tmp2;
-	int		err;
+	t_node	*t2;
+	int		k;
 
-	err = set->j;
-	while (set->v[err])
+	k = set->j;
+	while (set->v[k])
 	{
-		if (ft_atol(set->v[err]) > INT_MAX || ft_atol(set->v[err]) < INT_MIN)
-			return (err + 1);
-		err++;
+		if (ft_atol(set->v[k]) > INT_MAX || ft_atol(set->v[k]) < INT_MIN)
+			return (1);
+		k++;
 	}
-	err = 0;
+	k = 0;
 	tmp = a->top;
 	while (tmp)
 	{
-		tmp2 = a->top->prev;
-		while (tmp2)
+		t2 = a->top->prev;
+		while (t2)
 		{
-			if (tmp2->value == tmp->value && tmp != tmp2)
-				err++;
-			tmp2 = tmp2->prev;
+			if (t2->value == tmp->value && tmp != t2)
+				k++;
+			t2 = t2->prev;
 		}
 		tmp = tmp->prev;
 	}
-	return (err);
+	return (k);
 }
 
-void	ft_error_handling(t_stack *stack, t_input *input, int flag)
+void	ft_free_memory(t_stack *stack, t_input *input)
 {
+	int	i;
+
+	if (input->v && input->j == 0)
+	{
+		i = 0;
+		while (i < input->i)
+			free(input->v[i++]);
+		free(input->v);
+	}
+	if (input)
+		free(input);
 	free_stack(stack);
-	if (input->s)
-		free_input(input->v, input->i);
-	free(input);
-	exit(flag);
 }
 
 /* verify for invalid input and than return error message if necessary */
-void	ft_error(t_stack *a, t_input *set)
+void	ft_error(t_stack *a, t_input *set, int argc)
 {
+	if (argc < 2)
+	{
+		ft_free_memory(a, set);
+		exit(1);
+	}
 	if (ft_digit_check(set) || ft_num_check(a, set))
 	{
 		write(2, "Error\n", 6);
-		ft_error_handling(a, set, 1);
+		ft_free_memory(a, set);
+		exit(1);
 	}
 	if (ft_sorted_stack(a))
-		ft_error_handling(a, set, 0);
+	{
+		ft_free_memory(a, set);
+		exit(0);
+	}
 }

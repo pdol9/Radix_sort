@@ -49,7 +49,6 @@ int	ft_find_position(t_node *node, t_stack *stack)
 	return (i);
 }
 
-/* return size of the stack */
 int	ft_stack_size(t_stack *stack)
 {
 	t_node			*node;

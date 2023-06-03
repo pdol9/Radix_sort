@@ -24,7 +24,6 @@ typedef struct s_list
 
 /* standard set of functions in libft.a */
 int			ft_atoi(const char *string);
-long		ft_atol(const char *string);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t n, size_t size);
 int			ft_isalnum(int n);

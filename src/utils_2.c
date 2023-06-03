@@ -6,7 +6,7 @@
 /*   By: pdolinar <pdolinar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:49:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/06/29 20:29:46 by pdolinar         ###   ########.fr       */
+/*   Updated: 2022/06/10 18:47:47 by pdolinar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,31 @@ int	del_bottom_stack(t_stack *stack)
 	return (0);
 }
 
-void	free_input(char **vector, int size)
+long	ft_atol(const char *string)
 {
-	int	i;
+	int		i;
+	long	r;
+	long	sign;
 
 	i = 0;
-	while (i < size)
-		free(vector[i]);
-	free(vector);
+	r = 0;
+	sign = 1;
+	while ((string[i] == ' ') || (string[i] == '\t') || (string[i] == '\n')
+		|| (string[i] == '\v') || (string[i] == '\r' ) || (string[i] == '\f'))
+	{
+		i++;
+	}
+	if (string[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (string[i] == '+')
+		i++;
+	while (string[i] >= '0' && string[i] <= '9')
+	{
+		r = r * 10 + (string[i] - '0');
+		i++;
+	}
+	return (sign * r);
 }

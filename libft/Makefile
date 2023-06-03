@@ -19,7 +19,6 @@ CFLAGS	=		-Wall -Wextra -Werror
 RM		=		rm -rf
 
 SRC		=		ft_atoi.c \
-				ft_atol.c \
 				ft_bzero.c \
 				ft_calloc.c \
 				ft_isalnum.c \
@@ -91,11 +90,11 @@ bonus: all $(OBJ_BONUS)
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "$(PR)LIBFT object files deleted$(REV)"
+	@echo "$(PR)All object files deleted$(REV)"
 
 fclean:	clean
 	@$(RM) $(NAME)
-	@echo "$(PR)--> All LIBFT compiled files deleted <--$(REV)"
+	@echo "$(PR)$(NAME) deleted$(REV)"
 
 norm:
 	norminette $(SRC_DIR) $(INC)

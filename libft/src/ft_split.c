@@ -84,7 +84,7 @@ char	**ft_split(const char *s, char c)
 
 	k = 0;
 	counter = word_counter(s, c);
-	matrix = (char **)malloc(sizeof(char *) * counter + 1);
+	matrix = (char **)malloc(sizeof(char *) * (counter + 1));
 	if (!(matrix))
 		return (NULL);
 	while (k < counter)
