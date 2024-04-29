@@ -10,14 +10,14 @@ specifically for set of 100 and 500 numbers, with following limitations:
 - no global variables
 - using only 2 stacks (A and B)
 - allowed operations to sort:
-    - sa  -> swap first two elements at the top of stack A
-    - pa  -> push element from stack B to stack A
-    - ra  -> move element from top to bottom of stack A 
-    - rra -> move element from bottom to top of stack A 
-    - sb  -> swap first two elements at the top of stack B
-    - pb  -> push element from stack A to stack B
-    - rb  -> move element from top to bottom of stack B 
-    - rrb -> move element from bottom to top of stack B 
+    - sa : swap first two elements at the top of stack A
+    - pa : push element from stack B to stack A
+    - ra : move element from top to bottom of stack A 
+    - rra: move element from bottom to top of stack A 
+    - sb : swap first two elements at the top of stack B
+    - pb : push element from stack A to stack B
+    - rb : move element from top to bottom of stack B 
+    - rrb: move element from bottom to top of stack B 
 
 Program will print to the terminal names of operations carried out to sort the stack.
 
@@ -54,16 +54,16 @@ make fclean
 
 ## Examples
 
-Installing ..
+Installing
 <br>
-<img src="./images/push-1.png" alt="Pushswap" width="400" height="280">
+<img src="./images/push-1.png" alt="Pushswap" width="560" height="160">
 
 Usage
 <br>
-<img src="./images/push-2.png" alt="output" width="400" height="280">
+<img src="./images/push-2.png" alt="output" width="500" height="160">
 <br>
-<img src="./images/push-3.png" alt="number of op" width="400" height="280">
+<img src="./images/push-3.png" alt="number of op" width="500" height="50">
 
 Handling errors
 <br>
-<img src="./images/push-4.png" alt="errors" width="400" height="280">
+<img src="./images/push-4.png" alt="errors" width="500" height="50">
